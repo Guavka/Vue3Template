@@ -1,31 +1,40 @@
-import path from 'path'
+/// <reference types="vitest" />
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import vue from '@vitejs/plugin-vue';
 
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
-import Inspect from 'vite-plugin-inspect'
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
-const pathSrc = path.resolve(__dirname, 'src')
-const autoImportPath = path.resolve(__dirname, 'configs/autoImport')
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
+import Inspect from 'vite-plugin-inspect';
+
+
+const srcURL = new URL('./src', import.meta.url)
+const srcPath = fileURLToPath(new URL('src', import.meta.url))
+const autoImportPath = fileURLToPath(new URL('configs/autoImport', srcURL))
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  test: {
+    globals: true,
+    environment: 'happy-dom'
+  },
   plugins: [
     vue(),
     AutoImport({
       imports: [
         'vue',
-        'pinia',
+        'pinia'
       ],
       eslintrc: {
         enabled: true,
-        filepath: path.resolve(autoImportPath, '.eslintrc-auto-import.json')
+        filepath: path.resolve(autoImportPath, '.eslintrc-auto-import.json'),
       },
       resolvers: [
         ElementPlusResolver(),
@@ -36,7 +45,7 @@ export default defineConfig({
     Components({
       resolvers: [
         ElementPlusResolver(),
-        IconsResolver({ enabledCollections: ['ep'], }),
+        IconsResolver({ enabledCollections: ['ep'] }),
       ],
       dts: path.resolve(autoImportPath, 'components.d.ts'),
     }),
@@ -47,7 +56,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': pathSrc,
+      '@': srcPath,
     },
   },
-})
+
+});

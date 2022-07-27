@@ -1,33 +1,41 @@
 {
-  "files": [],
+  "extends": "@vue/tsconfig/tsconfig.node.json",
+  "include": [
+    "vite.config.ts",
+    "cypress.config.ts",
+    "env.d.ts",
+    "src/App.vue",
+    "src/main.ts",
+    "src/router/**/*.ts",
+    "src/modules/**/*.ts",
+    "src/plugins/**/*.ts",
+    "src/components/**/*.vue",
+    "src/views/**/*.vue",
+    "configs/autoImport/**/*.ts"
+  ],
+  "exclude": [
+    "src/**/__tests__/*"
+  ],
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "types": [
-      "vite/client",
-      "element-plus/global",
-      "unplugin-icons/types/vue"
-    ],
+    "strict": false,
+    "sourceMap": true,
+    "composite": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
       ]
-    }
-  },
-  "include": [
-    "src",
-    "configs"
-  ],
-  "references": [
-    {
-      "path": "./configs/ts/tsconfig.config.json"
     },
-    {
-      "path": "./configs/ts/tsconfig.app.json"
-    },
-    {
-      "path": "./configs/ts/tsconfig.vitest.json"
-    }
-  ]
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+    ],
+    "types": [
+      "vite/client",
+      "element-plus/global",
+      "unplugin-icons/types/vue",
+      "vitest/globals"
+    ]
+  }
 }
