@@ -8,16 +8,15 @@ import vue from '@vitejs/plugin-vue';
 
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
-
-import Icons from 'unplugin-icons/vite';
-import IconsResolver from 'unplugin-icons/resolver';
 import Inspect from 'vite-plugin-inspect';
 
+import { Vuetify3Resolver } from 'unplugin-vue-components/resolvers'
 
 const srcURL = new URL('./src', import.meta.url)
 const srcPath = fileURLToPath(new URL('src', import.meta.url))
-const autoImportPath = fileURLToPath(new URL('configs/autoImport', srcURL))
+const autoImportPath = fileURLToPath(new URL('configs/', srcURL))
+const modulesPath = fileURLToPath(new URL('modules/', srcURL))
+const pluginsPath = fileURLToPath(new URL('plugins/', srcURL))
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -36,28 +35,22 @@ export default defineConfig({
         enabled: true,
         filepath: path.resolve(autoImportPath, '.eslintrc-auto-import.json'),
       },
-      resolvers: [
-        ElementPlusResolver(),
-        IconsResolver({ prefix: 'Icon' }),
-      ],
+      dirs: ['./src/modules/**/*components/*.vue'],
       dts: path.resolve(autoImportPath, 'auto-imports.d.ts'),
     }),
     Components({
       resolvers: [
-        ElementPlusResolver(),
-        IconsResolver({ enabledCollections: ['ep'] }),
+        Vuetify3Resolver()
       ],
       dts: path.resolve(autoImportPath, 'components.d.ts'),
-    }),
-    Icons({
-      autoInstall: true,
     }),
     Inspect(),
   ],
   resolve: {
     alias: {
-      '@': srcPath,
+      '@src': srcPath,
+      '@modules': modulesPath,
+      '@plugins': pluginsPath
     },
-  },
-
+  }
 });

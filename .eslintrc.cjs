@@ -7,7 +7,7 @@ module.exports = {
     'plugin:vue/vue3-essential',
     'eslint:recommended',
     '@vue/eslint-config-typescript/recommended',
-    './configs/autoImport/.eslintrc-auto-import.json',
+    './configs/.eslintrc-auto-import.json',
   ],
   overrides: [
     {
