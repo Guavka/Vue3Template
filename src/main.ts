@@ -1,12 +1,14 @@
 import App from './App.vue';
 import router from './router'
-import './assets/media.scss'
-import './assets/reset.scss'
-import 'element-plus/theme-chalk/dark/css-vars.css'
+import vuetify from './plugins/vuetify/vuetify'
+import { loadFonts } from './plugins/vuetify/webfontloader'
+
+loadFonts()
 
 const app = createApp(App);
 
 app.use(createPinia());
 app.use(router)
+app.use(vuetify)
 
 app.mount('#app');

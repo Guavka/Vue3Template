@@ -10,7 +10,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import Inspect from 'vite-plugin-inspect';
 
-import { Vuetify3Resolver } from 'unplugin-vue-components/resolvers'
+import vuetify from 'vite-plugin-vuetify';
 
 const srcURL = new URL('./src', import.meta.url)
 const srcPath = fileURLToPath(new URL('src', import.meta.url))
@@ -26,6 +26,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    vuetify({ autoImport: true }),
     AutoImport({
       imports: [
         'vue',
@@ -39,9 +40,6 @@ export default defineConfig({
       dts: path.resolve(autoImportPath, 'auto-imports.d.ts'),
     }),
     Components({
-      resolvers: [
-        Vuetify3Resolver()
-      ],
       dts: path.resolve(autoImportPath, 'components.d.ts'),
     }),
     Inspect(),
