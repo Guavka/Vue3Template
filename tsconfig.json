@@ -21,6 +21,7 @@
     "sourceMap": true,
     "composite": true,
     "baseUrl": ".",
+    "jsx": "preserve",
     "paths": {
       "@/*": [
         "./src/*"
