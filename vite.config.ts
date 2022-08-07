@@ -131,13 +131,13 @@ export default defineConfig({
     include: ['test/**/*.test.ts'],
     environment: 'happy-dom',
     deps: {
-      inline: ['@vue', '@vueuse', 'vue-demi'],
+      inline: ['@vue', '@vueuse', 'vue-demi', 'vuetify'],
     },
   },
 
   ssr: {
     // TODO: workaround until they support native ESM
-    noExternal: ['workbox-window', /vue-i18n/],
+    noExternal: ['workbox-window', 'vue-i18n', 'vuetify'],
   },
 
   ssgOptions: {

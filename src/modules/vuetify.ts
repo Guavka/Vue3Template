@@ -1,7 +1,6 @@
 // Styles
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
-import { loadFonts } from './vuetify/webfontloader'
 // Vuetify
 import { createVuetify, type ThemeDefinition } from 'vuetify'
 import { type UserModule } from '~/types'
@@ -44,8 +43,6 @@ const darkTheme: ThemeDefinition = {
     info: '#5271ff',
   }
 }
-
-loadFonts()
 
 export const install: UserModule = ({ app }) => {
   const vuetify = createVuetify(
