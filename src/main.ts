@@ -1,14 +1,17 @@
 import App from './App.vue';
-import router from './router'
-import vuetify from './plugins/vuetify/vuetify'
-import { loadFonts } from './plugins/vuetify/webfontloader'
+import { ViteSSG } from 'vite-ssg'
+import { setupLayouts } from 'virtual:generated-layouts'
+import type { UserModule } from './types'
+import generatedRoutes from '~pages'
 
-loadFonts()
+const routes = setupLayouts(generatedRoutes)
 
-const app = createApp(App);
-
-app.use(createPinia());
-app.use(router)
-app.use(vuetify)
-
-app.mount('#app');
+export const createApp = ViteSSG(
+  App,
+  { routes, base: import.meta.env.BASE_URL },
+  (ctx) => {
+    // install all modules under `modules/`
+    Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
+      .forEach(i => i.install?.(ctx))
+  },
+)

@@ -1,41 +1,41 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.node.json",
-  "include": [
-    "vite.config.ts",
-    "cypress.config.ts",
-    "env.d.ts",
-    "src/App.vue",
-    "src/main.ts",
-    "src/router/**/*.ts",
-    "src/modules/**/*.ts",
-    "src/plugins/**/*.ts",
-    "src/components/**/*.vue",
-    "src/views/**/*.vue",
-    "configs/**/*.ts"
-  ],
-  "exclude": [
-    "src/**/__tests__/*"
-  ],
   "compilerOptions": {
-    "strict": false,
-    "sourceMap": true,
-    "composite": true,
     "baseUrl": ".",
-    "jsx": "preserve",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    },
+    "module": "ESNext",
+    "target": "ESNext",
     "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
+      "DOM",
+      "ESNext"
     ],
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
     "types": [
+      "vitest",
       "vite/client",
-      "vitest/globals",
-      "vuetify"
-    ]
-  }
+      "vue/ref-macros",
+      "vite-plugin-pages/client",
+      "vite-plugin-vue-layouts/client"
+    ],
+    "paths": {
+      "~/*": [
+        "src/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ]
+    }
+  },
+  "exclude": [
+    "dist",
+    "node_modules",
+    "cypress"
+  ]
 }
