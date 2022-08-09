@@ -1,7 +1,7 @@
 import NProgress from 'nprogress'
-import { type UserModule } from '~/types'
+import { type UserPlugin } from '~/types'
 
-export const install: UserModule = ({ isClient, router }) => {
+export const install: UserPlugin = ({ isClient, router }) => {
   if (isClient) {
     router.beforeEach((to, from) => {
       if (to.path !== from.path)

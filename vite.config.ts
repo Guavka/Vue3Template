@@ -18,19 +18,32 @@ import Shiki from 'markdown-it-shiki'
 
 import vuetify from 'vite-plugin-vuetify';
 
-const srcURL = new URL('src/', import.meta.url)
-const srcPath = fileURLToPath(new URL('src/', import.meta.url))
-const autoImportPath = fileURLToPath(new URL('configs/', import.meta.url))
+const folderURL = new URL(import.meta.url)
+const srcURL = new URL('src/', folderURL)
+
+const autoImportPath = fileURLToPath(new URL('configs/', folderURL))
+const srcPath = fileURLToPath(srcURL)
+
+const assetsPath = fileURLToPath(new URL('assets/', srcURL))
+const layoutsPath = fileURLToPath(new URL('layouts/', srcURL))
 const modulesPath = fileURLToPath(new URL('modules/', srcURL))
+const pagesPath = fileURLToPath(new URL('pages/', srcURL))
 const pluginsPath = fileURLToPath(new URL('plugins/', srcURL))
+const storePath = fileURLToPath(new URL('storePath/', srcURL))
+const stylesPath = fileURLToPath(new URL('styles/', srcURL))
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
-      '@src': srcPath,
-      '@modules': modulesPath,
-      '@plugins': pluginsPath
+      '~src': srcPath,
+      '~modules': modulesPath,
+      '~plugins': pluginsPath,
+      '~assets': assetsPath,
+      '~layouts': layoutsPath,
+      '~srcPages': pagesPath,
+      '~store': storePath,
+      '~styles': stylesPath
     },
   },
   plugins: [
@@ -57,8 +70,9 @@ export default defineConfig({
         filepath: path.resolve(autoImportPath, '.eslintrc-auto-import.json'),
       },
       dirs: [
-        'src/composables',
-        'src/store'
+        'src/scripts',
+        'src/store',
+        'src/modules/**/store'
       ],
       vueTemplate: true,
       dts: path.resolve(autoImportPath, 'auto-imports.d.ts'),
@@ -95,8 +109,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
       manifest: {
-        name: 'Vitesse',
-        short_name: 'Vitesse',
+        name: 'Template',
+        short_name: 'Template',
         theme_color: '#ffffff',
         icons: [
           {
