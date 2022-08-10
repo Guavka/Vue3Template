@@ -2,7 +2,7 @@
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 // Vuetify
-import { createVuetify, type ThemeDefinition } from 'vuetify'
+import { createVuetify, useTheme, type ThemeDefinition } from 'vuetify'
 import { type UserPlugin } from '~/types'
 
 const lightTheme: ThemeDefinition = {
@@ -59,5 +59,6 @@ export const install: UserPlugin = ({ app }) => {
       }
     }
   )
+
   app.use(vuetify)
 }
