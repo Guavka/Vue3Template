@@ -11,4 +11,6 @@ intro:
   hi: Hi, {name}!
   aka: Also known as
   whats-your-name: What's your name?
-not-found: Not found
+text404: 
+  title: Page not found
+  desc: The Page you are looking for doesn`t exist or an other error occured. Go back, or choose a new direction.

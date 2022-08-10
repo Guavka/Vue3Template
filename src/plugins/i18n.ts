@@ -17,7 +17,7 @@ const messages = Object.fromEntries(
 export const install: UserPlugin = ({ app }) => {
   const i18n = createI18n({
     legacy: false,
-    locale: 'en',
+    locale: 'ru',
     messages,
   })
 

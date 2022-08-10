@@ -1,9 +1,13 @@
 <template>
-  <main class="px-4 py-10 text-center text-gray-700 dark:text-gray-200">
-    <RouterView />
-    <Footer />
-    <div class="mt-5 mx-auto text-center opacity-75 dark:opacity-50 text-sm">
-      [Default Layout]
-    </div>
-  </main>
+  <v-app-bar></v-app-bar>
+  <v-navigation-drawer></v-navigation-drawer>
+  <v-main>
+    <v-container class="d-flex flex-column justify-center h-100 align-center">
+      <RouterView />
+
+      <Footer />
+    </v-container>
+  </v-main>
+  <v-footer>
+  </v-footer>
 </template>

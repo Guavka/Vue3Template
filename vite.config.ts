@@ -70,7 +70,6 @@ export default defineConfig({
         filepath: path.resolve(autoImportPath, '.eslintrc-auto-import.json'),
       },
       dirs: [
-        'src/scripts',
         'src/store',
         'src/modules/**/store'
       ],
@@ -81,6 +80,7 @@ export default defineConfig({
       extensions: ['vue', 'md'],
       // allow auto import and register components used in markdown
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+      dirs: ["src/modules/widgets"],
       dts: path.resolve(autoImportPath, 'components.d.ts'),
     }),
     Markdown({
