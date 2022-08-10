@@ -8,7 +8,9 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Footer: typeof import('./../src/modules/widgets/Footer.vue')['default']
+    LocaleSelect: typeof import('./../src/modules/widgets/LocaleSelect.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    VuetifyThemeToggler: typeof import('./../src/modules/widgets/VuetifyThemeToggler.vue')['default']
   }
 }

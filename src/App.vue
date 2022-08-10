@@ -4,6 +4,9 @@ import { useTheme } from 'vuetify/lib/framework.mjs';
 const theme = useTheme()
 theme.global.name.value = useLocalStorage('theme', theme.global.name.value).value
 
+const { locale } = useI18n()
+locale.value = useLocalStorage('locale', locale.value).value
+
 // https://github.com/vueuse/head
 // you can use this to manipulate the document head in any components,
 // they will be rendered correctly in the html results with vite-ssg

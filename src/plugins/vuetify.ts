@@ -2,7 +2,7 @@
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 // Vuetify
-import { createVuetify, useTheme, type ThemeDefinition } from 'vuetify'
+import { createVuetify, type ThemeDefinition } from 'vuetify'
 import { type UserPlugin } from '~/types'
 
 const lightTheme: ThemeDefinition = {
@@ -44,6 +44,8 @@ const darkTheme: ThemeDefinition = {
   }
 }
 
+export const themeNames = ['lightTheme', 'darkTheme']
+
 export const install: UserPlugin = ({ app }) => {
   const vuetify = createVuetify(
     // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
@@ -59,6 +61,5 @@ export const install: UserPlugin = ({ app }) => {
       }
     }
   )
-
   app.use(vuetify)
 }
