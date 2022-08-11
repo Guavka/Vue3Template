@@ -42,7 +42,6 @@
     "isReactive": true,
     "isReadonly": true,
     "isRef": true,
-    "layoutStore": true,
     "makeDestructurable": true,
     "markRaw": true,
     "nextTick": true,

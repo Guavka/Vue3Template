@@ -80,7 +80,7 @@ export default defineConfig({
       extensions: ['vue', 'md'],
       // allow auto import and register components used in markdown
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-      dirs: ["src/modules/widgets"],
+      dirs: ["src/modules/widgets", "src/layouts/**/"],
       dts: path.resolve(autoImportPath, 'components.d.ts'),
     }),
     Markdown({

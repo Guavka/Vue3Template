@@ -1,6 +1,5 @@
 <template>
-  <v-app-bar></v-app-bar>
-
+  <DashboardHeader />
   <v-navigation-drawer></v-navigation-drawer>
   <v-main>
     <v-container class="d-flex flex-column justify-center h-100 align-center">
@@ -10,3 +9,10 @@
   <v-footer>
   </v-footer>
 </template>
+
+<script setup lang="ts">
+
+</script>
+
+<style scoped>
+</style>

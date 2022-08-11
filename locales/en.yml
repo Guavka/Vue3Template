@@ -14,3 +14,10 @@ intro:
 text404: 
   title: Page not found
   desc: The Page you are looking for doesn`t exist or an other error occured. Go back, or choose a new direction.
+
+header:
+  title: Dashboard
+  notificationsTitle: Notifications
+  accountMenu: 
+    fullInfo: View profile
+    exit: Exit
