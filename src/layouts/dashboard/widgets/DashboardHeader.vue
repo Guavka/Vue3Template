@@ -6,7 +6,7 @@
     <v-app-bar-title>{{ t('header.title') }}</v-app-bar-title>
     <v-spacer />
 
-    <VuetifyThemeToggler :cLightThemeName='themeNames[0]' :cDarkThemeName='themeNames[1]' />
+    <ThemeToggler :cLightThemeName='themeNames[0]' :cDarkThemeName='themeNames[1]' />
     <LocaleSelect />
     <GoPathBtn />
     <NotificationBtn :c-title="t('header.notificationsTitle')" />

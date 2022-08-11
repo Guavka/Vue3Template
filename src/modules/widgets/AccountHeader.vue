@@ -67,8 +67,6 @@ const menuItemsComp = computed(() => {
     { text: 'Exit', icon: 'mdi-exit-to-app', path: '/sign-out' }
   ]
 })
-
-console.log(props.cAccountHeader)
 </script>
 
 <style scoped>
